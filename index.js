@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './Database/dbConfig.js';
+import authRoute from './Routes/authRoute.js';
+
 
 
 dotenv.config();
@@ -18,6 +20,9 @@ connectDB();
 app.get('/',(req,res)=>{
     res.send('Hello World');
 });
+
+
+app.use("/api/auth", authRoute);
 
 const PORT=process.env.PORT || 5000;
 
